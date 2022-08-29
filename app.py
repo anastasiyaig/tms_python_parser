@@ -45,7 +45,7 @@ def sensors_data():
     return res
 
 
-def display_data(cpu=None, disks=None, sensors=None):
+def show_data_collection(cpu=None, disks=None, sensors=None):
     print(fontstyle.apply("Your CPU aggregated data is present below:", "bold/blue"))
     print("CPU current | CPU Minimum | CPU Maximum | CPU Count")
     print("___________________________________________________")
@@ -87,7 +87,7 @@ def display_data(cpu=None, disks=None, sensors=None):
 
 
 def main():
-    display_data(
+    show_data_collection(
         cpu_data(),
         disks_data(),
         sensors_data()
