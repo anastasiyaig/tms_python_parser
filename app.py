@@ -18,9 +18,9 @@ def disks_data():
     # used and free space expressed in bytes, plus the percentage usage.
     data_disk_usage = psutil.disk_usage('/')
     res.update(
-        disk_total_space=(round(data_disk_usage.total / (1024 ** 3), 2)),
-        disk_space_used=(round(data_disk_usage.used / (1024 ** 3), 2)),
-        disk_space_free=(round(data_disk_usage.free / (1024 ** 3), 2)),
+        disk_total_space=(round(data_disk_usage.total / (1024 ** 3), 2)),  # to gigabytes, round to 2
+        disk_space_used=(round(data_disk_usage.used / (1024 ** 3), 2)),  # to gigabytes, round to 2
+        disk_space_free=(round(data_disk_usage.free / (1024 ** 3), 2)),  # to gigabytes, round to 2
         disk_used_percentage=data_disk_usage.percent)
     # Return system-wide disk I/O statistics as a named tuple
     data_io_counters = psutil.disk_io_counters(perdisk=False, nowrap=True)
@@ -37,10 +37,14 @@ def disks_data():
 
 def sensors_data():
     res = {}
+    # Return battery status information. If no battery is installed or metrics can’t be determined None is returned.
+    # percent: battery power left as a percentage.
+    # secsleft: a rough approximation of how many seconds are left before the battery runs out of power.
+    # power_plugged: True if the AC power cable is connected, False if not or None if it can’t be determined.
     data = psutil.sensors_battery()
     res.update(
         battery_power_left=data.percent,
-        seconds_left_to_discharge=round(data.secsleft / 60),
+        seconds_left_to_discharge=round(data.secsleft / 60),  # from seconds to hours
         cable_connected=str(data.power_plugged))
     return res
 
@@ -78,7 +82,7 @@ def show_data_collection(cpu=None, disks=None, sensors=None):
 
     print(fontstyle.apply('Your battery information:', 'bold/RED'))
     print("Power left, % | Time remaining | Charging status")
-    print("_"*48)
+    print("_" * 48)
     print("{:^14}|{:^5} minute(s) | {:<} \n".format(
         sensors['battery_power_left'],
         sensors['seconds_left_to_discharge'],
