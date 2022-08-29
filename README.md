@@ -1,0 +1,1 @@
+![Results preview](/Users/anastasiya/tms_python/2022-08-29 10.35.41.jpg "Results preview")
