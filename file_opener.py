@@ -13,7 +13,8 @@ def my_parser():
         values = []  # empty list to create values that will be mapped to keys
         for i in range(1, len(text_lines)):  # starting from 1 to skip the header line
             values.append(dict(zip(keys, text_lines[i])))
-        values = json.dumps(values)  # convert the list with dictionaries to JSON format
+        with open("sample.json", "w") as outfile:
+            json.dump(values, outfile)
         return values
 
 
