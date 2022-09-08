@@ -1,12 +1,12 @@
 [
     {
-        "age": "25",
         "first_name": "trevor",
-        "hobby": "modeling"
+        "hobby": "modeling",
+        "age": "25"
     },
     {
-        "age": "37",
         "first_name": "jason",
-        "hobby": "reading"
+        "hobby": "reading",
+        "age": "37"
     }
 ]
