@@ -1,1 +1,12 @@
-[{"first_name": "trevor", "hobby": "modeling", "age": "25"}, {"first_name": "jason", "hobby": "reading", "age": "37"}]
+[
+    {
+        "age": "25",
+        "first_name": "trevor",
+        "hobby": "modeling"
+    },
+    {
+        "age": "37",
+        "first_name": "jason",
+        "hobby": "reading"
+    }
+]

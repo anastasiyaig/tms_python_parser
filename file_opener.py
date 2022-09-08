@@ -14,7 +14,7 @@ def my_parser():
         for i in range(1, len(text_lines)):  # starting from 1 to skip the header line
             values.append(dict(zip(keys, text_lines[i])))
         with open("sample.json", "w") as outfile:
-            json.dump(values, outfile)
+            json.dump(values, outfile, sort_keys=True, indent=4)
         return values
 
 
